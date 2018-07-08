@@ -1,6 +1,13 @@
-unbound:
-  image: r.cfcr.io/maltore/maltore/homelabdns
-  ports:
-  - "53:53/udp"
-  - "53:53"
-  restart: always
+version: "3"
+
+services:
+
+  unbound:
+    image: r.cfcr.io/maltore/maltore/homelabdns
+    ports:
+      - "53:53/udp"
+      - "53:53"
+    restart: always
+    deploy:
+      placement:
+        constraints: [node.role == manager]
