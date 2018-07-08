@@ -6,7 +6,9 @@ services:
     image: r.cfcr.io/maltore/maltore/homelabdns:master
     ports:
       - "53:53/udp"
-      - "54:54"
+      - "53:53"
     deploy:
+      mode: replicated
+      replicas: 2
       placement:
         constraints: [node.role == manager]
